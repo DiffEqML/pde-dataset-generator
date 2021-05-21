@@ -12,8 +12,8 @@ def to_dgl(u, mesh):
     '''
     graph = dgl.DGLGraph()
     src, dst = get_edges(mesh)
-    graph.add_edges(src, dst)
     graph.add_nodes(mesh.num_vertices())
+    graph.add_edges(src, dst)
     graph.ndata['x'] = torch.tensor(mesh.coordinates()[:,0])
     graph.ndata['y'] = torch.tensor(mesh.coordinates()[:,1])
     graph.ndata['value'] = torch.tensor(get_values(u, mesh))

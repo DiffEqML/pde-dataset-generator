@@ -15,7 +15,7 @@ def rectangle(x0,
               cell_size,
               tol,
               t=-1):
-    domain = Rectangle(Point(x0, xn), Point(y0, yn))
+    domain = Rectangle(Point(x0, y0), Point(xn, yn))
     mesh = generate_mesh(domain, cell_size)
     function_space = FunctionSpace(mesh, 'P', 1)
 
