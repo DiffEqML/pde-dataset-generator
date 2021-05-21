@@ -11,8 +11,8 @@ from src.utils.bc import rectangle_static, rectangle_dynamic
 def gaussian(stop:float,
              steps:int, 
              mesh, 
+             bc,
              f:str='0', 
-             ud:str='0',
              u0:str='0', 
              path:str='data/gaussian.bin'
              ):
@@ -32,11 +32,9 @@ def gaussian(stop:float,
     '''
     dt = stop / steps
     function_space = FunctionSpace(mesh, 'P', 1)
-    ud = Expression(ud, degree=2)
     u0 = Expression(u0, degree=2)
     f = Expression(f, degree=2)
 
-    bc = DirichletBC(function_space, ud, boundary)
     un = interpolate(u0, function_space)
     
     u = TrialFunction(function_space)

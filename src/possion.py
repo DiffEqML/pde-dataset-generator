@@ -13,8 +13,8 @@ from src.utils.bc import rectangle_static
 
 
 def possion(mesh,  
+            bc, 
             f:str='0',
-            ud:str='0',
             path:str='data/possion.bin'
             ):
     ''' Create Possion Equation Dataset
@@ -33,8 +33,6 @@ def possion(mesh,
     u = TrialFunction(function_space)
     v = TestFunction(function_space)
     f = Expression(f, degree=2)
-    ud = Expression(ud, degree=2)
-    bc = DirichletBC(function_space, ud, boundary)
 
     a = dot(grad(u), grad(v)) * dx
     L = f * v * dx
