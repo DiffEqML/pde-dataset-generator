@@ -1,5 +1,0 @@
-/tmp/tmpil_8qwa7/dolfin_expression_cdb5397a974876f56863204535453398.cpp: In member function ‘virtual void dolfin::dolfin_expression_cdb5397a974876f56863204535453398::eval(Eigen::Ref<Eigen::Matrix<double, -1, 1> >, Eigen::Ref<const Eigen::Matrix<double, -1, 1> >) const’:
-/tmp/tmpil_8qwa7/dolfin_expression_cdb5397a974876f56863204535453398.cpp:61:27: error: unable to find numeric literal operator ‘operator""x’
-   61 |           values[0] = 1 + 2x[0]*x[0] + 2*x[1]*x[1];
-      |                           ^~
-/tmp/tmpil_8qwa7/dolfin_expression_cdb5397a974876f56863204535453398.cpp:61:27: note: use ‘-fext-numeric-literals’ to enable more built-in suffixes
