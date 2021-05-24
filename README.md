@@ -63,15 +63,23 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 
 ### Possion process, square domain, single boundary control
 
-![possion process, square domain, single boundary control](fig/possion_square.png)
+<img src="fig/possion_square.png" alt="possion process, square domain, single boundary control" style="zoom:70%;" />
 
 ### Possion process, L shape domain, single boundary control
 
-![possion process, L shape domain, single boundary control](fig/possion_l.png)
+<img src="fig/possion_l.png" alt="possion process, L shape domain, single boundary control" style="zoom:70%;" />
 
 ### Possion process, circle shape domain, single boundary control
 
-![possion process, circle shape domain, single boundary control](fig/possion_circle.png)
+<img src="fig/possion_circle.png" alt="possion process, circle shape domain, single boundary control" style="zoom:70%;" />
+
+### Gaussian process, rectangle shape domain, single boundary control
+
+![gaussian process, rectangle shape domain, single boundary control](fig/gaussian_square.gif)
+
+### Gaussian process, rectangle shape domain, multi & dynamic boundary control
+
+![gaussian process, rectangle shape domain, multi & dynamic boundary control](fig/gaussian_square_dynamic.gif)
 
 ## 📜 Reference
 
