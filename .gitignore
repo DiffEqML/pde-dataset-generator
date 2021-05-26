@@ -1,0 +1,6 @@
+# Exclude generated data
+data/
+
+# Exclude extra files
+__pycache__
+.ipynb_checkpoints
