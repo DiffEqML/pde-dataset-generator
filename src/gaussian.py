@@ -5,15 +5,15 @@ from dolfin import *
 from mshr import *
 from dgl.data.utils import save_graphs
 from src.utils.to_dgl import to_dgl
-from src.utils.bc import rectangle_static, rectangle_dynamic
+from src.utils.bc import rectangle
 
 
 def gaussian(stop:float,
              steps:int, 
              mesh, 
-             bc,
              f:str='0', 
              u0:str='0', 
+             ud: str='0',
              path:str='data/gaussian.bin'
              ):
     ''' Create Gaussian Equation Dataset
@@ -33,7 +33,10 @@ def gaussian(stop:float,
     dt = stop / steps
     function_space = FunctionSpace(mesh, 'P', 1)
     u0 = Expression(u0, degree=2)
+    ud = Expression(ud, degree=2)
     f = Expression(f, degree=2)
+
+    bc = DirichletBC(function_space, ud, boundary)
 
     un = interpolate(u0, function_space)
     
@@ -96,29 +99,30 @@ def gaussian_square(x0:float,
         path: <str> path for saving generated dgl graph, in .bin format
     '''
     if (dy):
-        function_space, bc = rectangle_dynamic(x0,
-                                               xn, 
-                                               y0, 
-                                               yn, 
-                                               ud_top, 
-                                               ud_bottom, 
-                                               ud_left,
-                                               ud_right, 
-                                               cell_size, 
-                                               0, 
-                                               tol
-                                               )
+        mesh, function_space, bc = rectangle(x0,
+                                             xn, 
+                                             y0, 
+                                             yn, 
+                                             ud_top, 
+                                             ud_bottom, 
+                                             ud_left,
+                                             ud_right, 
+                                             cell_size, 
+                                             0, 
+                                             tol
+                                             )
     else:
-        function_space, bc = rectangle_static(x0, 
-                                              xn, 
-                                              y0, 
-                                              yn, 
-                                              ud_top, 
-                                              ud_bottom, 
-                                              ud_left, 
-                                              ud_right,
-                                              cell_size,
-                                              tol)
+        mesh, function_space, bc = rectangle(x0, 
+                                             xn, 
+                                             y0, 
+                                             yn, 
+                                             ud_top, 
+                                             ud_bottom, 
+                                             ud_left, 
+                                             ud_right,
+                                             cell_size,
+                                             tol
+                                             )
     dt = stop / steps  
     u0 = Expression(u0, degree=2)
     f = Expression(f, degree=2)
@@ -135,18 +139,18 @@ def gaussian_square(x0:float,
     for _ in range(steps):
         t += dt
         if (dy):
-            _, bc = rectangle_dynamic(x0,
-                                      xn, 
-                                      y0, 
-                                      yn, 
-                                      ud_top, 
-                                      ud_bottom, 
-                                      ud_left,
-                                      ud_right, 
-                                      cell_size, 
-                                      t, 
-                                      tol
-                                      )
+            _, bc = rectangle(x0,
+                              xn, 
+                              y0, 
+                              yn, 
+                              ud_top, 
+                              ud_bottom, 
+                              ud_left,
+                              ud_right, 
+                              cell_size, 
+                              t, 
+                              tol
+                              )
         solve(a == L, u, bc)
         un.assign(u)
         graphs.append(to_dgl(u, mesh))
