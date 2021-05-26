@@ -12,7 +12,10 @@ def plot_graph(graph,
                mesh_alpha=0.5, 
                mesh_linewidth=1, 
                contour_level=30,
-               *args):
+               separate_mesh=True,
+               figsize=(10, 5),
+               *args,
+               **kwargs):
     ''' Draw DGLGraph with node value
 
     Generate two figures, one will show the mesh, another
@@ -29,8 +32,9 @@ def plot_graph(graph,
         args: <float> 2 the boundary of color bar, the first
             value is the lowest value, and the second value
             is the hightest value
+        kwargs: arguments to be passed to matplotlib.pyplot
     '''
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=figsize)
     plt.subplot(1, 2, 1)
     x = graph.ndata['x']
     y = graph.ndata['y']
@@ -45,17 +49,20 @@ def plot_graph(graph,
                  color=mesh_color, 
                  alpha=mesh_alpha, 
                  linewidth=mesh_linewidth)
-
-    ax = plt.subplot(1, 2, 2)
+    # Apply norm 
+    norm = None
     if args:
         norm = matplotlib.colors.Normalize(vmin=args[0], vmax=args[1])
-        fig = plt.tricontourf(x, y, value, levels=contour_level, norm=norm)
-    else:
-        fig = plt.tricontourf(x, y, value, levels=contour_level)
-    divider = make_axes_locatable(ax)
-    cax = divider.append_axes("right", size="5%", pad=0.05)
+    # Mesh on plot or separated
+    cax = None
+    if separate_mesh:
+        ax = plt.subplot(1, 2, 2)
+        fig = plt.tricontourf(x, y, value, levels=contour_level, norm=norm, **kwargs)  
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.05)
+    # Plot with interpolation
+    fig = plt.tricontourf(x, y, value, levels=contour_level, norm=norm, **kwargs)  
     plt.colorbar(fig, cax=cax)
-
 
 def gif_generator(load_path, save_path):
     ''' Generate gif from series figures
