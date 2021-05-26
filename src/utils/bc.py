@@ -47,7 +47,7 @@ def rectangle(x0,
     bc.append(DirichletBC(function_space, ud_left, boundaries, 3))
     bc.append(DirichletBC(function_space, ud_right, boundaries, 4))
 
-    return function_space, bc
+    return mesh, function_space, bc
 
 
 def circle(x,
@@ -65,7 +65,7 @@ def circle(x,
         ud = Expression(ud, degree=2, t=t)
     else:
         bc = DirichletBC(function_space, ud, boundary)
-    return function_space, bc
+    return mesh, function_space, bc
 
 
 def multi_rectangle(num, 
@@ -121,7 +121,7 @@ def multi_rectangle(num,
         bc.append(DirichletBC(function_space, ud_left, boundaries, 4 * i + 3))
         bc.append(DirichletBC(function_space, ud_right, boundaries, 4 * i + 4))
 
-    return function_space, bc
+    return mesh, function_space, bc
 
 
 def multi_circle(num, 
@@ -153,7 +153,7 @@ def multi_circle(num,
             ud_temp = Expression(ud[i], degree=2)
         bc.append(DirichletBC(function_space, ud_temp, boundaries, i))
         
-    return function_space, bc
+    return mesh, function_space, bc
 
 
 def boundary(x, on_boundary):
@@ -162,7 +162,7 @@ def boundary(x, on_boundary):
 
 class CircleBoundary(SubDomain):
     def __init__(self, x, y, r, tol):
-        SubDomain.__init__()
+        SubDomain.__init__(self)
         self.x = x
         self.y = y
         self.r = r
@@ -174,7 +174,7 @@ class CircleBoundary(SubDomain):
 
 class XBoundary(SubDomain):
     def __init__(self, value, tol):
-        SubDomain.__init__()
+        SubDomain.__init__(self)
         self.value = value
         self.tol = tol
     def inside(self, x, on_boundary):
@@ -183,7 +183,7 @@ class XBoundary(SubDomain):
 
 class YBoundary(SubDomain):
     def __init__(self, value, tol):
-        SubDomain.__init__()
+        SubDomain.__init__(self)
         self.value = value
         self.tol = tol
     def inside(self, x, on_boundary):

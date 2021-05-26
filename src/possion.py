@@ -77,17 +77,17 @@ def possion_square(x0:float,
         tol: <float> boundary bias, e.g. (x-tol, x+tol) is a boundary on x
         path: <str> path for saving generated dgl graph, in .bin format
     '''
-    function_space, bc = rectangle(x0,
-                                   xn, 
-                                   y0, 
-                                   yn, 
-                                   ud_top, 
-                                   ud_bottom, 
-                                   ud_left,
-                                   ud_right, 
-                                   cell_size, 
-                                   tol
-                                   )
+    mesh, function_space, bc = rectangle(x0,
+                                         xn, 
+                                         y0, 
+                                         yn, 
+                                         ud_top, 
+                                         ud_bottom, 
+                                         ud_left,
+                                         ud_right, 
+                                         cell_size, 
+                                         tol
+                                         )
 
     u = TrialFunction(function_space)
     v = TestFunction(function_space)
