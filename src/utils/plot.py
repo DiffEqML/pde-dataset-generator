@@ -1,4 +1,5 @@
 import torch
+import matplotlib
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
@@ -7,7 +8,8 @@ def plot_graph(graph,
                mesh_color='black', 
                mesh_alpha=0.5, 
                mesh_linewidth=1, 
-               contour_level=30):
+               contour_level=30,
+               *args):
     ''' Draw DGLGraph with node value
 
     Generate two figures, one will show the mesh, another
@@ -21,6 +23,9 @@ def plot_graph(graph,
         mesh_linewidth: <int> pyplot linewidht option
         contour_level: <int> number of classified level in
             contour graph
+        args: <float> 2 the boundary of color bar, the first
+            value is the lowest value, and the second value
+            is the hightest value
     '''
     plt.figure(figsize=(10, 5))
     plt.subplot(1, 2, 1)
@@ -39,7 +44,11 @@ def plot_graph(graph,
                  linewidth=mesh_linewidth)
 
     ax = plt.subplot(1, 2, 2)
-    fig = plt.tricontourf(x, y, value, levels=contour_level)
+    if args:
+        norm = matplotlib.colors.Normalize(vmin=args[0], vmax=args[1])
+        fig = plt.tricontourf(x, y, value, levels=contour_level, norm=norm)
+    else:
+        fig = plt.tricontourf(x, y, value, levels=contour_level)
     divider = make_axes_locatable(ax)
     cax = divider.append_axes("right", size="5%", pad=0.05)
     plt.colorbar(fig, cax=cax)
