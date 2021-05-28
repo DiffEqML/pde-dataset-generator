@@ -69,3 +69,44 @@ def get_values(u, mesh):
     for pos in mesh.coordinates():
         values.append(u(Point(pos)))
     return values
+
+
+def to_dgl_gen(u, mesh):
+    ''' Special usage for GEN model '''
+    graph = dgl.DGLGraph()
+    src, dst = get_edges(mesh)
+    graph.add_nodes(mesh.num_vertices())
+    graph.add_edges(src, dst)
+    graph = add_features(u, mesh, src, dst, graph)
+    return graph
+
+
+def add_features(u, mesh, src, dst, graph):
+    coords = mesh.coordinates()
+    value = np.array(get_values(u, mesh)).reshape(-1, 1)
+    feature = np.hstack([coords, value])
+    zero_array = np.zeros((mesh.num_vertices()))
+    one_array = np.ones((mesh.num_vertices()))
+    onehot_array = np.hstack([zero_array.reshape(-1, 1), one_array.reshape(-1, 1)])
+
+    dist = []
+    for i in range(len(src)):
+        dist.append(np.linalg.norm(coords[dst[i]] - coords[src[i]]))
+    dist = np.array(dist)
+
+    graph.ndata['x'] = torch.tensor(coords[:,0], dtype=torch.float32)
+    graph.ndata['y'] = torch.tensor(coords[:,1], dtype=torch.float32)
+    graph.ndata['coords'] = torch.tensor(coords, dtype=torch.float32)
+    # WARNNING: value shape here is different from original one
+    graph.ndata['value'] = torch.tensor(value, dtype=torch.float32)
+    graph.ndata['feat'] = torch.tensor(feature, dtype=torch.float32)
+    graph.ndata['init_feat'] = torch.tensor(feature, dtype=torch.float32)
+    graph.ndata['is_bdd'] = torch.tensor(zero_array)
+    graph.ndata['type'] = torch.tensor(one_array)
+    graph.ndata['type_onehot'] = torch.tensor(onehot_array)
+
+    graph.edata['dist'] = torch.tensor(dist.reshape(-1, 1), dtype=torch.float32)
+    graph.edata['feat'] = torch.tensor(dist.reshape(-1, 1), dtype=torch.float32)
+    graph.edata['init_feat'] = torch.tensor(dist.reshape(-1, 1), dtype=torch.float32)
+    
+    return graph
