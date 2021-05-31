@@ -14,10 +14,16 @@ def rectangle(x0,
               ud_right,
               cell_size,
               tol,
-              t=-1):
-    domain = Rectangle(Point(x0, y0), Point(xn, yn))
-    mesh = generate_mesh(domain, cell_size)
-    function_space = FunctionSpace(mesh, 'P', 1)
+              t=-1, 
+              ms=None,
+              fs=None):
+    if fs is None:              
+        domain = Rectangle(Point(x0, y0), Point(xn, yn))
+        mesh = generate_mesh(domain, cell_size)
+        function_space = FunctionSpace(mesh, 'P', 1)
+    else:
+        mesh = ms
+        function_space = fs
 
     top = YBoundary(yn, tol)
     bottom = YBoundary(y0, tol)
