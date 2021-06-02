@@ -110,3 +110,31 @@ def add_features(u, mesh, src, dst, graph):
     graph.edata['init_feat'] = torch.tensor(dist.reshape(-1, 1), dtype=torch.float32)
     
     return graph
+
+def obj_to_dgl(obj):
+    '''Transforms pywavefront object into DGL graph
+    Compatible with ArcSim .obj files
+    ==> TODO <=== 
+    1) fix code for supporting multiple features
+    2) check functions
+    3) add timestamps
+    4) merge functions into a single to_dgl with checks
+    '''
+    vert = np.array(obj.vertices)
+    mesh = np.array(obj.mesh_list[0].faces)
+    # We add the sources and destination through contiguous nodes
+    # We should also repeat by switching indexes to have bidirectional graph
+    # BEWARE: this will have lots of duplicates, don't think DGL can deal with them natively
+    # extend method similar to append
+    src = []
+    dst = []
+    for i, j in zip([0,1,2], [1,2,0]): 
+        src.extend(mesh[:,i].tolist()); dst.extend(mesh[:,j].tolist())
+        src.extend(mesh[:,j].tolist()); dst.extend(mesh[:,i].tolist())
+    graph = dgl.DGLGraph()
+    graph.add_nodes(vert.shape[0])
+    graph.add_edges(src, dst)
+    graph.ndata['x'] = torch.tensor(vert[:,0])
+    graph.ndata['y'] = torch.tensor(vert[:,1])
+    graph.ndata['z'] = torch.tensor(vert[:,2])
+    return graph
