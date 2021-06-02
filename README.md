@@ -1,6 +1,6 @@
 # 📦 PDEs Dataset Generator
 
-A tool for generating dataset about several PDE process based on FEniCS. 
+A tool for generating dataset about several PDE process based on FEniCS and ARCSim.
 
 ## 💡 Introduction
 
