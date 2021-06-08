@@ -118,6 +118,13 @@ This will generate `.obj` files that we can load into Python with `pywavefront` 
 
 <img src="fig/flag.gif" alt="Flag simulation with adaptive remeshing" style="zoom:80%;" />
 
+### T-shirt and interactions with hard bodies
+<img src="fig/t-shirt.gif" alt="T-shirt and interactions with hard bodies" style="zoom:80%;" />
+
+### Paper tearing
+<img src="fig/tearing.gif" alt="Paper tearing" style="zoom:80%;" />
+
+
 
 ## 📜 References
 
