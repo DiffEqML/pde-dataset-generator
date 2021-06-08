@@ -4,14 +4,14 @@ A tool for generating datasets from several PDE processes based on Fenics and AR
 
 ## 💡 Introduction
 
-Research on PDEs needs ground truth datasets. Several tools can meet this requirement, FEniCS is one of the most famous tools. We here are going to provide some scripts to help us to more easily create such datasets and save them in DGL graph format. 
+Research on PDEs needs ground truth datasets. Several tools have been developed and among all, the open-source FEniCS is one of the most famous ones. Our goal is to provide tools for more easily creating such datasets and save them in the DGL graph format. 
 
 Features:
 
 - Compressed scripts, contain full generating process, including create domain, generate mesh, create boundary constrains, solve function, transfer mesh and result to dgl graph, and then save them. 
-- Results will be trainsferred to dgl graph, which is more convenient to use in graph model. We also going to provide numpy tools. 
-- In detail tutorial. We provide notebooks to show how our scripts work and knowledge about using FEniCS. 
-- Provide useful mini tools, including mesh to dgl transferring, dgl grpah plotting, etc. 
+- Results are transferred to dgl graph, which is convenient to use in graph models. We also provide numpy tools. 
+- Detailed tutorials with notebooks to show how our scripts work and knowledge about using FEniCS and ARCSim. 
+- Useful mini tools, including mesh to dgl transferring and modified dgl graph plotting.
 
 ## 🔧 Environment 
 
@@ -46,9 +46,9 @@ Here are guides for Fenics and ARCSim:
 
 **Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository.  
 
-**Step 2**. Based on your requirement refer to notebooks, there would be tutorials and examples. You can find all methods provided in below list. 
+**Step 2**. Based on your requirement refer to the notebooks, where there are tutorials and examples. You can find all methods provided in below list. 
 
-**Step 3**. Modify parameters to generate your datasets. 
+**Step 3**. Modify the parameters to generate your own datasets. 
 
 Provided methods:
 
@@ -85,7 +85,7 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 
 <img src="fig/gaussian_square_dynamic.gif" alt="gaussian process, rectangle shape domain, multi & dynamic boundary control" style="zoom:80%;" />
 
-## 💾 Guide with Fenics
+## 💾 Guide with ARCSim
 **Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository. 
 
 **Step 2**. ArcSim installation
