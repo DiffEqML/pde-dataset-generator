@@ -8,10 +8,10 @@ Research on PDEs needs ground truth datasets. Several tools have been developed 
 
 Features:
 
-- Compressed scripts, contain full generating process, including create domain, generate mesh, create boundary constrains, solve function, transfer mesh and result to dgl graph, and then save them. 
-- Results are transferred to dgl graph, which is convenient to use in graph models. We also provide numpy tools. 
-- Detailed tutorials with notebooks to show how our scripts work and knowledge about using FEniCS and ARCSim. 
-- Useful mini tools, including mesh to dgl transferring and modified dgl graph plotting.
+- Compressed scripts containing full generating process, including creating domain, generating mesh, creating boundary constrains, solve function, transfer mesh and result to dgl graph and saving 
+- Results are transferred to DGL graph, which is convenient to use in graph models; we also provide numpy tools
+- Detailed tutorials with notebooks to show how our scripts work and knowledge about using ARCSim, FEniCS and SU2
+- Useful mini tools, including mesh to DGL transferring and modified dgl graph plotting
 
 ## 🔧 Environment 
 
@@ -43,7 +43,7 @@ Here are brief guides for the supported PDE simulators:
 - [Guide with Fenics](#📖-guide-with-fenics):
 - [Guide with SU2](#📖-guide-with-su2):
 
-
+---
 
 ## 📖 Guide with ARCSim
 **Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository
@@ -76,6 +76,7 @@ This will generate `.obj` files that we can load into Python with `pywavefront` 
 <img src="fig/flag.gif" alt="Flag simulation with adaptive remeshing" style="zoom:80%;" />
 *Flag simulation with adaptive remeshing*
 
+---
 
 ## 📖 Guide with FEniCS
 
@@ -101,6 +102,8 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 <img src="fig/gaussian_square.gif" alt="gaussian process, rectangle shape domain, single boundary control" style="zoom:80%;" />
 *Gaussian process on rectangular domain*
 
+---
+
 ## 📖 Guide with SU2
 
 **Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository
@@ -111,6 +114,8 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 
 <img src="fig/airfoil.gif" alt="Laminar Viscosity on Airfoil" style="zoom:80%;" />
 *Laminar viscosity of an airfoil*
+
+---
 
 ## 📊 Examples Gallery
 
