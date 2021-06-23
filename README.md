@@ -1,6 +1,6 @@
 # 📦 PDEs Dataset Generator
 
-A tool for generating datasets from several PDE processes based on Fenics and ARCSim.
+A tool for generating datasets for Partial Differential Equations (PDEs) from ARCSim, FEniCS and SU2.
 
 ## 💡 Introduction
 
@@ -38,55 +38,15 @@ Python Packages: jupyterlab, fenics, dgl, numpy, torch, matplotlib
 - `src`: all source code will be here, including scripts, tools
   - `utils`: mini tools will be here, including dgl transferring, graph plot
 
-Here are guides for Fenics and ARCSim:
-- [Guide with Fenics](#guide-with-fenics):
-- [Guide with ARCSim](#guide-with-arcsim):
+Here are brief guides for the supported PDE simulators:
+- [Guide with ARCSim](#📖-guide-with-arcsim):
+- [Guide with Fenics](#📖-guide-with-fenics):
+- [Guide with SU2](#📖-guide-with-su2):
 
-## 💾 Guide with Fenics
 
-**Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository.  
 
-**Step 2**. Based on your requirement refer to the notebooks, where there are tutorials and examples. You can find all methods provided in below list. 
-
-**Step 3**. Modify the parameters to generate your own datasets. 
-
-Provided methods:
-
-- Poisson process
-  - Customize domain & Single boundary control
-  - Square domain & Separate boundary control
-- Gaussian process
-  - Customize domain & Single boundary control (support time dynamic control)
-  - Square domain & Separate boundary control (support time dynamic control)
-  - Squares in square domain & Separate boundary control (support time dynamic control)
-  - Circles in circle domain & Single boundary control (support time dynamic control)
-
-Support methods will keep updating. For more detail, you can refer to the [project manager](https://github.com/cbhua/tool-pdeset-generator/projects/1). 
-
-## 📊 Examples
-
-### Possion process, square domain, single boundary control
-
-<img src="fig/possion_square.png" alt="possion process, square domain, single boundary control" style="zoom:60%;" />
-
-### Possion process, L shape domain, single boundary control
-
-<img src="fig/possion_l.png" alt="possion process, L shape domain, single boundary control" style="zoom:60%;" />
-
-### Possion process, circle shape domain, single boundary control
-
-<img src="fig/possion_circle.png" alt="possion process, circle shape domain, single boundary control" style="zoom:60%;" />
-
-### Gaussian process, rectangle shape domain, single boundary control
-
-<img src="fig/gaussian_square.gif" alt="gaussian process, rectangle shape domain, single boundary control" style="zoom:80%;" />
-
-### Gaussian process, rectangle shape domain, multi & dynamic boundary control
-
-<img src="fig/gaussian_square_dynamic.gif" alt="gaussian process, rectangle shape domain, multi & dynamic boundary control" style="zoom:80%;" />
-
-## 💾 Guide with ARCSim
-**Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository. 
+## 📖 Guide with ARCSim
+**Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository
 
 **Step 2**. ArcSim installation
 
@@ -113,10 +73,46 @@ When the simulation ends (we may do that with `Esc` as well) copy the `conf/flag
 This will generate `.obj` files that we can load into Python with `pywavefront` and the `obj_to_dgl` method we provide.
 
 
-## 📊 Examples
-### Flag simulation with adaptive remeshing
-
 <img src="fig/flag.gif" alt="Flag simulation with adaptive remeshing" style="zoom:80%;" />
+*Flag simulation with adaptive remeshing*
+
+
+## 📖 Guide with FEniCS
+
+**Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository.  
+
+**Step 2**. Based on your requirement refer to the notebooks, where there are tutorials and examples. You can find all methods provided in the below list. 
+
+**Step 3**. Modify the parameters to generate your own datasets. 
+
+Provided methods:
+
+- Poisson process
+  - Customize domain & Single boundary control
+  - Square domain & Separate boundary control
+- Gaussian process
+  - Customize domain & Single boundary control (support time dynamic control)
+  - Square domain & Separate boundary control (support time dynamic control)
+  - Squares in square domain & Separate boundary control (support time dynamic control)
+  - Circles in circle domain & Single boundary control (support time dynamic control)
+
+Support methods will keep updating. For more detail, you can refer to the [project manager](https://github.com/cbhua/tool-pdeset-generator/projects/1). 
+
+<img src="fig/gaussian_square.gif" alt="gaussian process, rectangle shape domain, single boundary control" style="zoom:80%;" />
+*Gaussian process on rectangular domain*
+
+## 📖 Guide with SU2
+
+**Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository
+
+**Step 2**. Install [SU2](https://su2code.github.io/download.html)
+
+**Step 3**. Modify the parameters to generate your own datasets
+
+<img src="fig/airfoil.gif" alt="Laminar Viscosity on Airfoil" style="zoom:80%;" />
+*Laminar viscosity of an airfoil*
+
+## 📊 Examples Gallery
 
 ### T-shirt and interactions with hard bodies
 <img src="fig/t-shirt.gif" alt="T-shirt and interactions with hard bodies" style="zoom:80%;" />
@@ -124,6 +120,22 @@ This will generate `.obj` files that we can load into Python with `pywavefront` 
 ### Paper tearing
 <img src="fig/tearing.gif" alt="Paper tearing" style="zoom:80%;" />
 
+### Possion process, square domain, single boundary control
+
+<img src="fig/possion_square.png" alt="possion process, square domain, single boundary control" style="zoom:60%;" />
+
+### Possion process, L shape domain, single boundary control
+
+<img src="fig/possion_l.png" alt="possion process, L shape domain, single boundary control" style="zoom:60%;" />
+
+### Possion process, circle shape domain, single boundary control
+
+<img src="fig/possion_circle.png" alt="possion process, circle shape domain, single boundary control" style="zoom:60%;" />
+
+
+### Gaussian process, rectangle shape domain, multi & dynamic boundary control
+
+<img src="fig/gaussian_square_dynamic.gif" alt="gaussian process, rectangle shape domain, multi & dynamic boundary control" style="zoom:80%;" />
 
 
 ## 📜 References
@@ -131,3 +143,4 @@ This will generate `.obj` files that we can load into Python with `pywavefront` 
 1. FEniCS project: https://fenicsproject.org/
 2. ARCSim project: http://graphics.berkeley.edu/resources/ARCSim/
 3. DGL project: https://www.dgl.ai/
+4. SU2 project: https://su2code.github.io/
