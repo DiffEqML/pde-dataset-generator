@@ -41,7 +41,7 @@ def possion(mesh,
     u = Function(function_space)
     solve(a == L, u, bc)
 
-    graph = to_dgl(u, mesh)
+    graph = to_dgl(function=u, mesh=mesh)
     save_graphs(path, graph)
 
 
@@ -98,7 +98,7 @@ def possion_square(x0:float,
     u = Function(function_space)
     solve(a == L, u, bc)
 
-    graph = to_dgl(u, mesh)
+    graph = to_dgl(function=u, mesh=mesh)
     save_graphs(path, graph)
 
 

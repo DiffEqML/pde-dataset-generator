@@ -52,7 +52,7 @@ def gaussian(stop:float,
         t += dt
         solve(a == L, u, bc)
         un.assign(u)
-        graphs.append(to_dgl(u, mesh))
+        graphs.append(to_dgl(function=u, mesh=mesh))
     
     save_graphs(path, graphs)
 
@@ -153,7 +153,7 @@ def gaussian_square(x0:float,
                               )
         solve(a == L, u, bc)
         un.assign(u)
-        graphs.append(to_dgl(u, mesh))
+        graphs.append(to_dgl(function=u, mesh=mesh))
     
     save_graphs(path, graphs)
 
