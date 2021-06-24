@@ -78,8 +78,9 @@ bin/arcsim generate data/
 
 This will generate `.obj` files that we can load into Python with `pywavefront` and the `obj_to_dgl` method we provide.
 
-
+<p align="center">
 <img src="fig/flag.gif" alt="Flag simulation with adaptive remeshing" style="zoom:80%;" />
+</p>
 
 *Flag simulation with adaptive remeshing*
 
@@ -106,7 +107,9 @@ Provided methods:
 
 Support methods will keep updating. For more detail, you can refer to the [project manager](https://github.com/cbhua/tool-pdeset-generator/projects/1). 
 
+<p align="center">
 <img src="fig/gaussian_square.gif" alt="gaussian process, rectangle shape domain, single boundary control" style="zoom:80%;" />
+</p>
 
 *Gaussian process on rectangular domain*
 
@@ -120,7 +123,9 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 
 **Step 3**. _Generating data_: take a look at the notebooks and the [SU2 tutorial collection](https://su2code.github.io/tutorials/home/) to get started
 
+<p align="center">
 <img src="fig/airfoil.gif" alt="Laminar Viscosity on Airfoil" style="zoom:80%;" />
+</p>
 
 *Laminar viscosity of an airfoil*
 
@@ -129,27 +134,35 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 ## 📊 Examples Gallery
 
 ### T-shirt and interactions with hard bodies
+<p align="center">
 <img src="fig/t-shirt.gif" alt="T-shirt and interactions with hard bodies" style="zoom:80%;" />
+</p>
 
 ### Paper tearing
+<p align="center">
 <img src="fig/tearing.gif" alt="Paper tearing" style="zoom:80%;" />
+</p>
 
 ### Possion process, square domain, single boundary control
-
+<p align="center">
 <img src="fig/possion_square.png" alt="possion process, square domain, single boundary control" style="zoom:60%;" />
+</p>
 
 ### Possion process, L shape domain, single boundary control
-
+<p align="center">
 <img src="fig/possion_l.png" alt="possion process, L shape domain, single boundary control" style="zoom:60%;" />
+</p>
 
 ### Possion process, circle shape domain, single boundary control
-
+<p align="center">
 <img src="fig/possion_circle.png" alt="possion process, circle shape domain, single boundary control" style="zoom:60%;" />
+</p>
 
 
 ### Gaussian process, rectangle shape domain, multi & dynamic boundary control
-
+<p align="center">
 <img src="fig/gaussian_square_dynamic.gif" alt="gaussian process, rectangle shape domain, multi & dynamic boundary control" style="zoom:80%;" />
+</p>
 
 
 ## 📜 References
