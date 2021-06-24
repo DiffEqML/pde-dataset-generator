@@ -48,32 +48,39 @@ Here are brief guides for the supported PDE simulators:
 ## 📖 Guide with ARCSim
 **Step 1**. [Download](https://github.com/cbhua/tool-pdeset-generator/archive/refs/heads/main.zip) or [Clone](https://github.com/cbhua/tool-pdeset-generator.git) this repository
 
-**Step 2**. ArcSim installation
+**Step 2**. _ArcSim installation_
 
 You may find the repository with fixes [here](https://github.com/kaist-silab/arcsim) with further instructions.
 To install it, run the following:
 
-`git clone https://github.com/kaist-silab/arcsim.git && cd arcsim/`
-
-`sudo chmod +x install.sh && sudo ./install.sh`
+```sh
+git clone https://github.com/kaist-silab/arcsim.git && cd arcsim/
+sudo chmod +x install.sh && sudo ./install.sh
+```
 
 At this point, you should be ready to go.
 
-**Step 3**. ArcSim simulation and `.obj` file saving
+**Step 3**. _ArcSim simulation and `.obj` file saving_
+
 Let's consider the flag example. In the ArcSim folder, make a new directory called data. Then run:
 
-`bin/arcsim simulate conf/flag.json data/`
+```sh
+bin/arcsim simulate conf/flag.json data/
+```
 
 (you may also run `simulateoffline` if you cannot visualize on your computer
 
 When the simulation ends (we may do that with `Esc` as well) copy the `conf/flag.json` into the folder where we saved the simulation, in our case`data/` and run:
 
-`bin/arcsim generate data/`
+```sh
+bin/arcsim generate data/
+```
 
 This will generate `.obj` files that we can load into Python with `pywavefront` and the `obj_to_dgl` method we provide.
 
 
 <img src="fig/flag.gif" alt="Flag simulation with adaptive remeshing" style="zoom:80%;" />
+
 *Flag simulation with adaptive remeshing*
 
 ---
@@ -100,6 +107,7 @@ Provided methods:
 Support methods will keep updating. For more detail, you can refer to the [project manager](https://github.com/cbhua/tool-pdeset-generator/projects/1). 
 
 <img src="fig/gaussian_square.gif" alt="gaussian process, rectangle shape domain, single boundary control" style="zoom:80%;" />
+
 *Gaussian process on rectangular domain*
 
 ---
@@ -110,9 +118,10 @@ Support methods will keep updating. For more detail, you can refer to the [proje
 
 **Step 2**. Install [SU2](https://su2code.github.io/download.html)
 
-**Step 3**. Modify the parameters to generate your own datasets
+**Step 3**. _Generating data_: take a look at the notebooks and the [SU2 tutorial collection](https://su2code.github.io/tutorials/home/) to get started
 
 <img src="fig/airfoil.gif" alt="Laminar Viscosity on Airfoil" style="zoom:80%;" />
+
 *Laminar viscosity of an airfoil*
 
 ---
